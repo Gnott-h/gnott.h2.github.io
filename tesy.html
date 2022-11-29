@@ -1,0 +1,373 @@
+<html>
+  <link rel="stylesheet" href="main.css">
+  <head>
+    <title>Phu.test</title>
+    <meta charset="utf-8">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />      
+  </head>
+  <script>
+
+    function showSuccessToast() {
+      toast({ title: "Warning!!",message: "Chức năng đang trong giai đoạn thử nghiệm.",type: "success",duration: 5000});
+    }
+
+    function showMeoToast() {
+      toast({title: "Lêu lêu!!",message: "cant catch me",type: "success",duration: 5000});
+    }
+
+    function toast({ title = "", message = "", type = "info", duration = 3000 }) {
+    const main = document.getElementById("toast");
+    if (main) {
+      const toast = document.createElement("div");
+      // Auto remove toast
+      const autoRemoveId = setTimeout(function () {
+        main.removeChild(toast);
+      }, duration + 1000);
+      // Remove toast when clicked
+      toast.onclick = function (e) {
+        if (e.target.closest(".toast__close")) {
+          main.removeChild(toast);
+          clearTimeout(autoRemoveId);
+        }
+      };
+  
+      const icons = {
+        success: "fas fa-check-circle",
+      };
+      const icon = icons[type];
+      const delay = (duration / 1000).toFixed(2);
+  
+      toast.classList.add("toast", `toast--${type}`);
+      toast.style.animation = `slideInLeft ease .3s, fadeOut linear 1s ${delay}s forwards`;
+      toast.innerHTML = `
+                      <div class="toast__icon">
+                          <i class="${icon}"></i>
+                      </div>
+                      <div class="toast__body">
+                          <h3 class="toast__title">${title}</h3>
+                          <p class="toast__msg">${message}   </p>
+                      </div>
+                      <div class="toast__close">
+                          <i class="fas fa-times"></i>
+                      </div>
+                  `;
+      main.appendChild(toast);
+    }
+  }
+  </script>
+  <body>
+    <style>
+      :root
+      {
+        color-scheme: dark;
+      }
+      .cycle1
+      {
+        opacity: 0.9;
+        background-image: url(https://i.pinimg.com/564x/2b/83/c1/2b83c154047ca70c3e9fb80e743a7b5f.jpg) ;
+        background-size: cover;
+        box-shadow: 1px 1px 100px rgb(235, 234, 234);
+        width: 100px;
+        background-clip: border-box;
+        height: 100px;
+        border-radius: 50%;
+        border: 1px solid ;
+        background-repeat: repeat;
+        border-color: rgb(17, 1, 1);
+        background-color: royalblue;
+        transform: translateX(300px) translateY(300px);
+        animation: slide 10s alternate 0s infinite ;
+      }
+      @keyframes slide {
+        from
+        {
+         background-position: left;
+        }
+        to 
+        {
+         background-position: right;
+        }
+      }
+      /*animation: name | duration | timing-function | delay | iteration-count | direction | fill-mode*/
+      .cycle2
+      {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color:black ;
+        opacity: 0.8;
+        animation: dichchuyen2  both 3s ,fade linear both 0.5s 3s, slide alternate 5s infinite; 
+        background-image: url(https://moon.nasa.gov/system/resources/detail_files/119_colormap_1500.jpg) ;
+        background-position: center;
+        background-size: cover;
+        box-shadow: 1px 1px 60px rgb(235, 234, 234);
+      }
+      .cycle3
+      {
+        width: 1px;
+        height: 1px;
+        border-radius: 50%; 
+        background-color:black ;
+        opacity: 0;
+        animation: dichchuyen3 both 6s 2.9s , appear 3s both 3s, fade linear 1.4s 2.8s,slide alternate 10s infinite ;
+        background-image: url(https://moon.nasa.gov/system/resources/detail_files/119_colormap_1500.jpg) ;
+        background-position: center;
+        background-size: cover;
+        box-shadow: 1px 1px 60px rgb(235, 234, 234);
+       
+      }
+      @keyframes appear {
+        to 
+        {
+          opacity: 0.8;
+        }
+      }
+      @keyframes fade 
+      {
+        to
+        {
+          opacity: -0.5;
+        }
+      }
+      @keyframes dichchuyen3
+      {
+        from 
+        {
+        
+        transform: translateX(450px) translateY(300px);
+        }
+        to 
+        {
+          opacity: 0.8;
+        width: 70px;
+        height: 70px;
+        transform: translateX(-50px) translateY(50px);
+        }
+      }
+      @keyframes dichchuyen2
+      {
+        from 
+        {
+        width: 100px;
+        height: 100px;
+      transform: translateX(-400px) translateY(-190px);
+        }
+        to 
+        {
+        width: 3px;
+        height: 3px;
+          transform: translateX(140px) translateY(100px);
+        }
+        
+      }
+      .boxall
+      {
+        
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        background-position: bottom;
+        background-image: url(https://i.pinimg.com/564x/96/62/fb/9662fb737bbe5163feb0e4f2bd4d5d45.jpg);
+
+      }
+      .box1
+      {
+        width: 35vw;
+        height: 100vh;
+      }
+      .box2
+      {
+        width:65vw ;
+        height: 100vh;
+        border: 100px;
+        
+        border-color: antiquewhite;
+      }
+      .tieudebox2
+      {
+        width: 15em;
+        height: 50px;
+        background-color: antiquewhite;
+        border-radius: 30px;
+        transform: translateX(30em) translateY(2em);
+        border-bottom: 5px solid;
+        border-color: blueviolet;
+      }
+      .text
+      {
+        text-align: center;
+        color: black;
+        margin-bottom: 0px;
+        transform: translateY(14px);
+        text-justify: kashida;
+        text-decoration-color: aqua;
+        text-shadow: 2px 5px 3px black;
+        
+      }
+      #toast {
+  position: fixed;
+  top: 32px;
+  right: 32px;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 2px;
+  padding: 20px 0;
+  min-width: 400px;
+  max-width: 450px;
+  border-radius: 50px;
+  border-left: 4px solid;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
+  margin: 10px;
+  
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(calc(100% + 32px));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+.toast--success {
+  border-color: #47d864;
+  
+}
+
+.toast--success .toast__icon {
+  color: #47d864;
+}
+
+
+.toast__icon {
+  font-size: 24px;
+}
+
+.toast__icon,
+.toast__close {
+  padding: 0 16px;
+}
+
+.toast__body {
+  flex-grow: 1;
+}
+
+.toast__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.toast__msg {
+  font-size: 14px;
+  color: #888;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+.toast__close {
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Helvetica Neue";
+  background-color: #f4f4f5;
+}
+
+body > div {
+  margin: auto;
+}
+
+/* ======= Buttons ======== */
+
+/* Block */
+.btn {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  text-align: center;
+  width: 25em;
+        height: 50px;
+        background-color: antiquewhite;
+        border-radius: 30px;
+        transform: translateX(30em) translateY(2em);
+        border-bottom: 5px solid;
+        border-color: blueviolet;
+        display: inline-block;
+}
+
+/* Modifier */
+.btn--size-l {
+  padding: 16px 56px;
+}
+
+.btn--size-s {
+  padding: 8px 32px;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btn + .btn {
+  margin-left: 16px;
+}
+
+.btn--success {
+  background-color:;
+}
+
+.btn--warn {
+  background-color: #ffb702;
+}
+
+.btn--danger {
+  background-color: #ff623d;
+}
+
+.btn--disabled {
+  opacity: 0.5 !important;
+  cursor: default;
+}
+      
+    </style>
+     
+      <div class="boxall" >
+        
+        <div class="box1">
+          <div onclick="showSuccessToast();" class="cycle1" >
+            <div class="cycle2">
+            </div>
+          </div>
+          <div class="cycle3"></div>
+        </div>
+        <div class="box2">
+          <div id="toast"></div>
+          <div onclick="showSuccessToast();" class="btn btn--success"> <div class="text"><h3>This page is about universe.</h3></div> </div>
+        </div>
+      </div>
+      
+  </body>
+</html>
